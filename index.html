@@ -16,7 +16,7 @@
       background-color: var(--purple);
       color: var(--white);
       text-align: center;
-      padding: 20px;
+      padding: 20px 10px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -33,11 +33,11 @@
     
     .game-container {
       background-color: var(--white);
-      padding: 20px;
+      padding: 15px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       width: 100%;
-      max-width: 400px;
+      max-width: 360px;
       box-sizing: border-box;
       margin: 0 auto;
     }
@@ -45,10 +45,9 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 6px;
-      margin-bottom: 20px;
-      padding: 0 20px;
-      width: calc(100% - 40px);
+      gap: 5px;
+      margin-bottom: 15px;
+      width: 100%;
     }
     
     .cell {
@@ -62,7 +61,7 @@
       font-weight: bold;
       color: var(--purple);
       background: var(--white);
-      border-radius: 8px;
+      border-radius: 5px;
       transition: all 0.3s ease;
     }
     
@@ -86,17 +85,16 @@
     
     .input-container {
       position: relative;
-      width: calc(100% - 40px);
-      margin: 0 auto 15px;
-      padding: 0 20px;
+      width: 100%;
+      margin-bottom: 15px;
     }
     
     #guess-input {
       width: 100%;
-      padding: 12px 40px 12px 12px;
+      padding: 10px 35px 10px 10px;
       font-size: 1.1rem;
       border: 2px solid var(--purple);
-      border-radius: 8px;
+      border-radius: 5px;
       text-align: center;
       text-transform: lowercase;
       box-sizing: border-box;
@@ -104,7 +102,7 @@
     
     .help-btn {
       position: absolute;
-      right: 30px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -113,8 +111,8 @@
       font-weight: bold;
       font-size: 1.2rem;
       cursor: pointer;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -130,15 +128,13 @@
       background-color: var(--orange);
       color: white;
       border: none;
-      padding: 12px;
+      padding: 10px;
       font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s;
       font-weight: bold;
-      width: calc(100% - 40px);
-      margin: 0 auto;
-      display: block;
+      width: 100%;
     }
     
     .submit-btn:hover {
@@ -146,12 +142,11 @@
     }
     
     #message {
-      margin: 15px 0;
+      margin: 10px 0;
       font-size: 1rem;
       min-height: 1.5em;
       color: var(--purple);
       font-weight: bold;
-      padding: 0 20px;
     }
 
     /* Модальное окно подсказки */
@@ -171,12 +166,11 @@
     .modal-content {
       background-color: var(--white);
       padding: 20px;
-      border-radius: 15px;
-      max-width: 400px;
+      border-radius: 10px;
       width: calc(100% - 40px);
+      max-width: 350px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       position: relative;
-      margin: 0 20px;
     }
     
     .close-modal {
@@ -219,33 +213,6 @@
       border-radius: 3px;
       margin-right: 8px;
       flex-shrink: 0;
-    }
-
-    /* Адаптация для очень маленьких экранов */
-    @media (max-width: 350px) {
-      .game-container {
-        padding: 15px;
-      }
-      
-      .grid {
-        gap: 4px;
-        padding: 0 15px;
-        width: calc(100% - 30px);
-      }
-      
-      .cell {
-        font-size: 1.3rem;
-      }
-      
-      #guess-input {
-        padding: 10px 36px 10px 10px;
-        font-size: 1rem;
-      }
-      
-      .submit-btn {
-        padding: 10px;
-        width: calc(100% - 30px);
-      }
     }
   </style>
 </head>
