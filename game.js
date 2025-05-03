@@ -28,29 +28,21 @@ function submitGuess() {
   const input = document.getElementById('guess-input');
   const guess = input.value.toLowerCase();
 
+  // Проверка на русские буквы
+  const russianLetters = /^[а-яё]+$/;
+  if (!russianLetters.test(guess)) {
+    message.textContent = "Только русские буквы!";
+    input.value = '';  // Очищаем поле
+    return;  // Прерываем выполнение
+  }
+
+  // Остальная логика (как было)
   if (guess.length !== 6) {
     message.textContent = "Слово должно быть 6 букв!";
     return;
   }
-
-  if (attempts >= maxAttempts) {
-    message.textContent = `Игра окончена! Слово: ${targetWord}`;
-    return;
-  }
-
-  // Проверяем каждую букву
-  for (let i = 0; i < 6; i++) {
-    const cell = document.getElementById(`cell-${attempts}-${i}`);
-    cell.textContent = guess[i];
-
-    if (guess[i] === targetWord[i]) {
-      cell.classList.add('correct'); // Зелёный
-    } else if (targetWord.includes(guess[i])) {
-      cell.classList.add('present'); // Жёлтый
-    } else {
-      cell.classList.add('absent'); // Серый
-    }
-  }
+  // ... далее ваш существующий код ...
+}
 
   // Если угадали
   if (guess === targetWord) {
