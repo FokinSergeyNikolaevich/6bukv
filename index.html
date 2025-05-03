@@ -49,6 +49,17 @@
       font-weight: bold;
     }
   </style>
+  /* Добавить в секцию style */
+#guess-input:invalid {
+  border-color: #ff4444;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
 </head>
 <body>
   <h1>6 Букв</h1>
