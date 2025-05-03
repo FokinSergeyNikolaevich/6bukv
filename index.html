@@ -7,7 +7,7 @@
   <style>
     :root {
       --orange: #FF7F11;
-      --purple: #7B5E7B;
+      --purple: #5F259F; /* Новый фиолетовый цвет */
       --white: #F9F5F6;
     }
     
@@ -26,8 +26,8 @@
     
     h1 {
       color: var(--orange);
-      margin-bottom: 30px;
-      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-size: 2rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
@@ -36,9 +36,8 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 100%;
+      width: calc(100% - 40px);
       max-width: 400px;
-      box-sizing: border-box;
       margin: 0 auto;
     }
     
@@ -88,7 +87,7 @@
       position: relative;
       width: calc(100% - 40px);
       margin: 0 auto 15px;
-      padding: 0 20px;
+      padding: 0 10px;
     }
     
     #guess-input {
@@ -104,7 +103,7 @@
     
     .help-btn {
       position: absolute;
-      right: 30px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -113,8 +112,8 @@
       font-weight: bold;
       font-size: 1.2rem;
       cursor: pointer;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -123,7 +122,7 @@
     }
     
     .help-btn:hover {
-      background-color: rgba(123, 94, 123, 0.2);
+      background-color: rgba(95, 37, 159, 0.1);
     }
     
     .submit-btn {
@@ -147,11 +146,11 @@
     
     #message {
       margin: 15px 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       min-height: 1.5em;
       color: var(--purple);
       font-weight: bold;
-      padding: 0 20px;
+      padding: 0 10px;
     }
 
     /* Модальное окно подсказки */
@@ -171,18 +170,17 @@
     .modal-content {
       background-color: var(--white);
       padding: 20px;
-      border-radius: 15px;
-      max-width: 400px;
+      border-radius: 10px;
       width: calc(100% - 40px);
+      max-width: 350px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       position: relative;
-      margin: 0 20px;
     }
     
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--purple);
@@ -196,12 +194,12 @@
     }
     
     .close-modal:hover {
-      background-color: rgba(123, 94, 123, 0.1);
+      background-color: rgba(95, 37, 159, 0.1);
     }
 
     .help-text {
       color: var(--purple);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: left;
       line-height: 1.5;
       font-size: 0.9rem;
@@ -210,27 +208,27 @@
     .color-hint {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .color-box {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 3px;
-      margin-right: 10px;
+      margin-right: 8px;
       flex-shrink: 0;
     }
 
-    /* Адаптация для очень маленьких экранов */
-    @media (max-width: 350px) {
+    @media (max-width: 400px) {
       .game-container {
         padding: 15px;
+        width: calc(100% - 30px);
       }
       
       .grid {
-        gap: 4px;
-        padding: 0 15px;
-        width: calc(100% - 30px);
+        gap: 5px;
+        padding: 0 10px;
+        width: calc(100% - 40px);
       }
       
       .cell {
@@ -238,13 +236,11 @@
       }
       
       #guess-input {
-        padding: 10px 36px 10px 10px;
-        font-size: 1rem;
+        padding: 10px 35px 10px 10px;
       }
       
-      .submit-btn {
-        padding: 10px;
-        width: calc(100% - 30px);
+      .help-btn {
+        right: 20px;
       }
     }
   </style>
@@ -294,7 +290,6 @@
 
   <script src="game.js"></script>
   <script>
-    // Функции для модального окна
     function showHelp() {
       document.getElementById('helpModal').style.display = 'flex';
     }
@@ -303,7 +298,6 @@
       document.getElementById('helpModal').style.display = 'none';
     }
     
-    // Закрытие по клику вне окна
     window.onclick = function(event) {
       const modal = document.getElementById('helpModal');
       if (event.target === modal) {
