@@ -36,11 +36,11 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: calc(100% - 200px);
+      width: calc(100% - 40px);
       max-width: 600px;
       box-sizing: border-box;
       position: relative;
-      margin: 0 100px;
+      margin: 0 20px;
     }
     
     .grid {
@@ -48,7 +48,7 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 8px;
       margin-bottom: 25px;
-      padding: 0 100px;
+      padding: 0 20px;
     }
     
     .cell {
@@ -86,9 +86,9 @@
     
     .input-container {
       position: relative;
-      width: calc(100% - 200px);
+      width: calc(100% - 40px);
       margin: 0 auto 15px;
-      padding: 0 100px;
+      padding: 0 20px;
     }
     
     #guess-input {
@@ -104,7 +104,7 @@
     
     .help-btn {
       position: absolute;
-      right: calc(100px + 10px);
+      right: calc(20px + 10px);
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -136,7 +136,7 @@
       cursor: pointer;
       transition: background 0.3s;
       font-weight: bold;
-      width: calc(100% - 200px);
+      width: calc(100% - 40px);
       margin: 0 auto;
       display: block;
     }
@@ -151,7 +151,7 @@
       min-height: 1.5em;
       color: var(--purple);
       font-weight: bold;
-      padding: 0 100px;
+      padding: 0 20px;
     }
 
     /* Модальное окно подсказки */
@@ -180,11 +180,22 @@
     
     .close-modal {
       position: absolute;
-      top: 10px;
+      top: 15px;
       right: 15px;
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--purple);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+    
+    .close-modal:hover {
+      background-color: rgba(123, 94, 123, 0.1);
     }
 
     .help-text {
@@ -211,8 +222,8 @@
     /* Адаптация для мобильных */
     @media (max-width: 768px) {
       .game-container {
-        width: calc(100% - 40px);
-        margin: 0 20px;
+        width: calc(100% - 20px);
+        margin: 0 10px;
         padding: 20px;
       }
       
@@ -264,7 +275,7 @@
   <!-- Модальное окно подсказки -->
   <div id="helpModal" class="modal">
     <div class="modal-content">
-      <span class="close-modal" onclick="hideHelp()">&times;</span>
+      <span class="close-modal" onclick="hideHelp()">×</span>
       <h2 style="color: var(--purple); margin-top: 0;">Как играть?</h2>
       <p class="help-text">
         Мы загадали слово из 6 букв, которое нужно отгадать. Для этого вводи в поле любые слова из 6 букв на русском языке. У тебя всего 6 попыток, чтобы угадать слово.
