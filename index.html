@@ -26,29 +26,29 @@
     
     h1 {
       color: var(--orange);
-      margin-bottom: 30px;
-      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-size: 2rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .game-container {
       background-color: var(--white);
-      padding: 30px;
+      padding: 20px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: calc(100% - 40px);
-      max-width: 600px;
+      width: 100%;
+      max-width: 400px;
       box-sizing: border-box;
-      position: relative;
-      margin: 0 20px;
+      margin: 0 auto;
     }
     
     .grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      margin-bottom: 25px;
+      gap: 6px;
+      margin-bottom: 20px;
       padding: 0 20px;
+      width: calc(100% - 40px);
     }
     
     .cell {
@@ -58,7 +58,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: var(--purple);
       background: var(--white);
@@ -94,7 +94,7 @@
     #guess-input {
       width: 100%;
       padding: 12px 40px 12px 12px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       border: 2px solid var(--purple);
       border-radius: 8px;
       text-align: center;
@@ -104,7 +104,7 @@
     
     .help-btn {
       position: absolute;
-      right: calc(20px + 10px);
+      right: 30px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -130,8 +130,8 @@
       background-color: var(--orange);
       color: white;
       border: none;
-      padding: 12px 25px;
-      font-size: 1.1rem;
+      padding: 12px;
+      font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s;
@@ -147,7 +147,7 @@
     
     #message {
       margin: 15px 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       min-height: 1.5em;
       color: var(--purple);
       font-weight: bold;
@@ -170,18 +170,19 @@
     
     .modal-content {
       background-color: var(--white);
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
-      max-width: 500px;
-      width: 90%;
+      max-width: 400px;
+      width: calc(100% - 40px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       position: relative;
+      margin: 0 20px;
     }
     
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--purple);
@@ -200,54 +201,50 @@
 
     .help-text {
       color: var(--purple);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: left;
       line-height: 1.5;
+      font-size: 0.9rem;
     }
 
     .color-hint {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .color-box {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 3px;
-      margin-right: 10px;
+      margin-right: 8px;
       flex-shrink: 0;
     }
 
-    /* Адаптация для мобильных */
-    @media (max-width: 768px) {
+    /* Адаптация для очень маленьких экранов */
+    @media (max-width: 350px) {
       .game-container {
-        width: calc(100% - 20px);
-        margin: 0 10px;
-        padding: 20px;
+        padding: 15px;
       }
       
       .grid {
-        padding: 0;
-      }
-      
-      .input-container,
-      #message,
-      .submit-btn {
-        width: 100%;
-        padding: 0;
-      }
-      
-      .help-btn {
-        right: 10px;
-      }
-      
-      h1 {
-        font-size: 2rem;
+        gap: 4px;
+        padding: 0 15px;
+        width: calc(100% - 30px);
       }
       
       .cell {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+      }
+      
+      #guess-input {
+        padding: 10px 36px 10px 10px;
+        font-size: 1rem;
+      }
+      
+      .submit-btn {
+        padding: 10px;
+        width: calc(100% - 30px);
       }
     }
   </style>
@@ -276,21 +273,21 @@
   <div id="helpModal" class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="hideHelp()">×</span>
-      <h2 style="color: var(--purple); margin-top: 0;">Как играть?</h2>
+      <h2 style="color: var(--purple); margin-top: 0; font-size: 1.3rem;">Как играть?</h2>
       <p class="help-text">
         Мы загадали слово из 6 букв, которое нужно отгадать. Для этого вводи в поле любые слова из 6 букв на русском языке. У тебя всего 6 попыток, чтобы угадать слово.
       </p>
       <div class="color-hint">
         <div class="color-box" style="background-color: var(--orange);"></div>
-        <span style="color: var(--purple);"><strong>Оранжевая</strong> - буква на своём месте</span>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Оранжевая</strong> - буква на своём месте</span>
       </div>
       <div class="color-hint">
         <div class="color-box" style="background-color: var(--purple);"></div>
-        <span style="color: var(--purple);"><strong>Фиолетовая</strong> - буква есть в слове, но в другой позиции</span>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Фиолетовая</strong> - буква есть в слове, но в другой позиции</span>
       </div>
       <div class="color-hint">
         <div class="color-box" style="background-color: #D3D3D3;"></div>
-        <span style="color: var(--purple);"><strong>Серая</strong> - буквы нет в слове</span>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Серая</strong> - буквы нет в слове</span>
       </div>
     </div>
   </div>
