@@ -23,7 +23,6 @@ function submitGuess() {
   const input = document.getElementById('guess-input');
   const guess = input.value.toLowerCase();
 
-  // Проверка на русские буквы
   const russianLetters = /^[а-яё]+$/;
   if (!russianLetters.test(guess)) {
     message.textContent = "Только русские буквы!";
@@ -71,7 +70,6 @@ function submitGuess() {
   }
 }
 
-// Инициализация игры при загрузке
 window.onload = function() {
   initGrid();
   document.getElementById('guess-input').focus();
