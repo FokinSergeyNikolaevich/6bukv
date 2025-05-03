@@ -28,20 +28,20 @@ function submitGuess() {
   const input = document.getElementById('guess-input');
   const guess = input.value.toLowerCase();
 
-  // Проверка на русские буквы
+  // Проверка на русские буквы (добавить этот блок)
   const russianLetters = /^[а-яё]+$/;
   if (!russianLetters.test(guess)) {
     message.textContent = "Только русские буквы!";
-    input.value = '';  // Очищаем поле
-    return;  // Прерываем выполнение
+    input.value = '';
+    return;
   }
 
-  // Остальная логика (как было)
+  // Остальной существующий код проверки слова...
   if (guess.length !== 6) {
     message.textContent = "Слово должно быть 6 букв!";
     return;
   }
-  // ... далее ваш существующий код ...
+  // ... и так далее
 }
 
   // Если угадали
