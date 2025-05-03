@@ -51,11 +51,18 @@
   </style>
 </head>
 <body>
-  <h1>6 Букв: Продукты</h1>
+  <h1>6 Букв</h1>
   <div class="game-container">
     <div id="grid" class="grid"></div>
     <div id="message"></div>
-    <input type="text" id="guess-input" maxlength="6" placeholder="Введите слово">
+   <input 
+  type="text" 
+  id="guess-input" 
+  maxlength="6" 
+  placeholder="Только русские буквы"
+  pattern="[А-Яа-яЁё]+" 
+  title="Вводите только русские буквы"
+>
     <button onclick="submitGuess()">Проверить</button>
   </div>
   <script src="game.js"></script>
