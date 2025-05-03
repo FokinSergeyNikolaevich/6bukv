@@ -57,6 +57,7 @@ function submitGuess() {
   if (guess === targetWord) {
     message.textContent = "Поздравляем! Вы угадали!";
     input.disabled = true;
+    document.querySelector('.submit-btn').disabled = true;
     return;
   }
 
@@ -66,6 +67,7 @@ function submitGuess() {
   if (attempts === maxAttempts) {
     message.textContent = `Игра окончена! Слово: ${targetWord}`;
     input.disabled = true;
+    document.querySelector('.submit-btn').disabled = true;
   }
 }
 
