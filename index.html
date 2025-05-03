@@ -16,7 +16,7 @@
       background-color: var(--purple);
       color: var(--white);
       text-align: center;
-      padding: 20px 10px;
+      padding: 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -26,28 +26,29 @@
     
     h1 {
       color: var(--orange);
-      margin-bottom: 20px;
-      font-size: 2rem;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .game-container {
       background-color: var(--white);
-      padding: 15px 40px 15px 20px;
+      padding: 20px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: calc(100% - 60px);
-      max-width: 380px;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 400px;
       box-sizing: border-box;
+      margin: 0 auto;
     }
     
     .grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 5px;
-      margin-bottom: 15px;
-      width: 100%;
+      gap: 6px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+      width: calc(100% - 40px);
     }
     
     .cell {
@@ -61,7 +62,7 @@
       font-weight: bold;
       color: var(--purple);
       background: var(--white);
-      border-radius: 5px;
+      border-radius: 8px;
       transition: all 0.3s ease;
     }
     
@@ -85,17 +86,17 @@
     
     .input-container {
       position: relative;
-      width: 100%;
-      margin-bottom: 15px;
-      padding-right: 20px;
+      width: calc(100% - 40px);
+      margin: 0 auto 15px;
+      padding: 0 20px;
     }
     
     #guess-input {
       width: 100%;
-      padding: 10px 35px 10px 10px;
+      padding: 12px 40px 12px 12px;
       font-size: 1.1rem;
       border: 2px solid var(--purple);
-      border-radius: 5px;
+      border-radius: 8px;
       text-align: center;
       text-transform: lowercase;
       box-sizing: border-box;
@@ -112,8 +113,8 @@
       font-weight: bold;
       font-size: 1.2rem;
       cursor: pointer;
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -129,13 +130,15 @@
       background-color: var(--orange);
       color: white;
       border: none;
-      padding: 10px;
+      padding: 12px;
       font-size: 1rem;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s;
       font-weight: bold;
-      width: 100%;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      display: block;
     }
     
     .submit-btn:hover {
@@ -143,11 +146,12 @@
     }
     
     #message {
-      margin: 10px 0;
-      font-size: 1rem;
+      margin: 15px 0;
+      font-size: 1.1rem;
       min-height: 1.5em;
       color: var(--purple);
       font-weight: bold;
+      padding: 0 20px;
     }
 
     /* Модальное окно подсказки */
@@ -167,17 +171,18 @@
     .modal-content {
       background-color: var(--white);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 15px;
+      max-width: 400px;
       width: calc(100% - 40px);
-      max-width: 350px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       position: relative;
+      margin: 0 20px;
     }
     
     .close-modal {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 15px;
+      right: 15px;
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--purple);
@@ -196,7 +201,7 @@
 
     .help-text {
       color: var(--purple);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-align: left;
       line-height: 1.5;
       font-size: 0.9rem;
@@ -205,19 +210,106 @@
     .color-hint {
       display: flex;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .color-box {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 3px;
-      margin-right: 8px;
+      margin-right: 10px;
       flex-shrink: 0;
+    }
+
+    /* Адаптация для очень маленьких экранов */
+    @media (max-width: 350px) {
+      .game-container {
+        padding: 15px;
+      }
+      
+      .grid {
+        gap: 4px;
+        padding: 0 15px;
+        width: calc(100% - 30px);
+      }
+      
+      .cell {
+        font-size: 1.3rem;
+      }
+      
+      #guess-input {
+        padding: 10px 36px 10px 10px;
+        font-size: 1rem;
+      }
+      
+      .submit-btn {
+        padding: 10px;
+        width: calc(100% - 30px);
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Остальное содержимое без изменений -->
+  <h1>Угадай слово</h1>
+  <div class="game-container">
+    <div id="grid" class="grid"></div>
+    <div id="message"></div>
+    <div class="input-container">
+      <input 
+        type="text" 
+        id="guess-input" 
+        maxlength="6" 
+        placeholder="Только русские буквы"
+        oninput="this.value = this.value.replace(/[^А-Яа-яЁё]/g, '')"
+        pattern="[А-Яа-яЁё]{6}"
+        title="Вводите только 6 русских букв"
+      >
+      <button class="help-btn" onclick="showHelp()">?</button>
+    </div>
+    <button class="submit-btn" onclick="submitGuess()">Проверить</button>
+  </div>
+
+  <!-- Модальное окно подсказки -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="hideHelp()">×</span>
+      <h2 style="color: var(--purple); margin-top: 0; font-size: 1.3rem;">Как играть?</h2>
+      <p class="help-text">
+        Мы загадали слово из 6 букв, которое нужно отгадать. Для этого вводи в поле любые слова из 6 букв на русском языке. У тебя всего 6 попыток, чтобы угадать слово.
+      </p>
+      <div class="color-hint">
+        <div class="color-box" style="background-color: var(--orange);"></div>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Оранжевая</strong> - буква на своём месте</span>
+      </div>
+      <div class="color-hint">
+        <div class="color-box" style="background-color: var(--purple);"></div>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Фиолетовая</strong> - буква есть в слове, но в другой позиции</span>
+      </div>
+      <div class="color-hint">
+        <div class="color-box" style="background-color: #D3D3D3;"></div>
+        <span style="color: var(--purple); font-size: 0.9rem;"><strong>Серая</strong> - буквы нет в слове</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+  <script>
+    // Функции для модального окна
+    function showHelp() {
+      document.getElementById('helpModal').style.display = 'flex';
+    }
+    
+    function hideHelp() {
+      document.getElementById('helpModal').style.display = 'none';
+    }
+    
+    // Закрытие по клику вне окна
+    window.onclick = function(event) {
+      const modal = document.getElementById('helpModal');
+      if (event.target === modal) {
+        hideHelp();
+      }
+    }
+  </script>
 </body>
 </html>
